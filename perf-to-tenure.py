@@ -1,3 +1,8 @@
+'''
+    This is a random take at building perf to tensure from the helium API. 
+    It may or may not work for your needs. 
+'''
+
 import requests
 import json
 
