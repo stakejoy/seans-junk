@@ -1,4 +1,5 @@
 # (DRAFT) DO NOT TRY THIS
+If you do try this, sorry if it didn't work. 
 
 # Who's this for?
 This writeup is for someone that has an ETL with a busted blockchain.db or busted ledger, but their postgres db is intact. 
