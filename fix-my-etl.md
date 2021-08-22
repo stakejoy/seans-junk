@@ -1,3 +1,6 @@
+# Who's this for?
+This writeup is for someone that has an ETL with a busted blockchain.db
+
 # I broke my ETL what do I do? 
 
 1. Don't panic it's mostly fixable. 
@@ -27,5 +30,29 @@
    - `bash curl -O https://snapshots.helium.wtf/mainnet/snap-<height>`
 
 ## Misconceptions I made 
-I was living under the premise that you need a whole copy of the blockchain to run ETL. This is not the case. You just need a snapshot that starts below the height of the ETL postgres DB and shazam. 
-1. you don't need a whole copy of the blockchain. you just need to start from a snapshot
+I was living under the premise that you need a whole copy of the blockchain to run ETL. You really only need a whole copy of the blockchain if you don't have a decent current ETL database in postgres.  This is not the case. You just need a snapshot that starts below the height of the ETL postgres DB and shazam. 
+
+1. Take very regular backups of postgres.
+2. Make snapshots for yourself. 
+3. Don't sweat blockchain db as hard as I did. Just take great care of your ETL DB in postgres and start from snapshots. 
+
+
+## Ok I heard you, what's next. 
+If you are like me and completely jacked up the blockchain.db and ledger.db, rename those directories. Don't just delete them silly goose. 
+
+1. etl stop 
+2. killall epmd (for good luck)
+3. mv blockchain.db blockchain.db.densone
+4. mv ledger.db ledger.db.densone
+5. etl start 
+6. etl repair sync_pause 
+7. etl repair sync_cancel 
+8. etl snapshot load /path/to/the/helium/snapshot
+9. etl repair sync_resume
+10. cross your fingers and it should do the right things. 
+
+## In conclusion 
+
+1. Take great care of postgres db 
+2. Worry less about blockchain.db if you corrupted it. You don't need the whole thing unless you are starting with a fresh postgres db, and in that case. I hope you have a backup somewhere. 
+
