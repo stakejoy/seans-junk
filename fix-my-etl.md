@@ -33,7 +33,7 @@ This writeup is for someone that has an ETL with a busted blockchain.db or buste
    - `bash curl -O https://snapshots.helium.wtf/mainnet/snap-<height>`
 
 ## Misconceptions I made 
-I was living under the premise that you need a whole copy of the blockchain to run ETL. You really only need a whole copy of the blockchain if you don't have a decent current ETL database in postgres.  This is not the case. You just need a snapshot that starts below the height of the ETL postgres DB and shazam. 
+I was living under the premise that you need a whole copy of the blockchain to run ETL. You really only need a whole copy of the blockchain if you don't have a decent current ETL database in postgres. You just need a snapshot that starts below the height of the ETL postgres DB and shazam. 
 
 1. Take very regular backups of postgres.
 2. Make snapshots for yourself. 
