@@ -1,5 +1,5 @@
 # Who's this for?
-This writeup is for someone that has an ETL with a busted blockchain.db
+This writeup is for someone that has an ETL with a busted blockchain.db or busted ledger, but their postgres db is intact. 
 
 # I broke my ETL what do I do? 
 
